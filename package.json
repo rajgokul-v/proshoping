@@ -1,0 +1,30 @@
+{
+  "name": "proshoping",
+  "version": "1.0.0",
+  "description": "MREN shopping cart app",
+  "main": "server.js",
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "express": "^4.17.1",
+    "react-bootstrap": "^1.5.2",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node backend/server",
+    "server":"nodemopn backend/server",
+    "client": "npm start --prefix frontendn"
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://rajgokul-v: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@github.com/rajgokul-v/proshoping.git"
+  },
+  "author": "RajGokul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajgokul-v/proshoping/issues"
+  },
+  "homepage": "https://github.com/rajgokul-v/proshoping#readme"
+}

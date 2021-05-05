@@ -57,6 +57,8 @@ const ProductScreen = ({ match }) => {
 								</Row>
 							</ListGroup.Item>
 						</ListGroup>
+						git remote add origin
+						https://rajgokul-v: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@github.com/rajgokul-v/proshoping.git
 						<Col>
 							<Button
 								className=" btn-block "
