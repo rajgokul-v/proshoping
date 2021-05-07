@@ -5,7 +5,9 @@
   "main": "server.js",
   "type": "module",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^4.6.0",
+    "colors": "^1.4.0",
     "dotenv": "^9.0.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.7",
@@ -21,10 +23,12 @@
     "start": "node backend/server",
     "server": "nodemon backend/server",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder",
+    "data:destroy": "nede backend/seeder -d"
   },
   "repository": {
-    "type": "git",
+    "type": "git", 
     "url": "git+https://rajgokul-v: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@github.com/rajgokul-v/proshoping.git"
   },
   "author": "RajGokul",
