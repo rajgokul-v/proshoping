@@ -1,4 +1,3 @@
-import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import colors from 'colors'
 import users from './data/users.js'
@@ -28,7 +27,7 @@ const importData = async () => {
 
 		await Product.insertMany(sampleProducts)
 
-		console.log('Data Imported!'.red.inverse)
+		console.log('Data Imported!'.green.inverse)
 		process.exit()
 	} catch (error) {
 		console.error(`${error}`.red.inverse)

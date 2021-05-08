@@ -1,8 +1,12 @@
-import Mongoose from 'Mongoose'
+import mongoose from 'mongoose'
 
-const userSchema = Mongoose.Schema(
+const userSchema = mongoose.Schema(
 	{
 		name: {
+			type: String,
+			require: true
+		},
+		email: {
 			type: String,
 			require: true,
 			unique: true
@@ -22,6 +26,6 @@ const userSchema = Mongoose.Schema(
 	}
 )
 
-const user = Mongoose.model('user ', userSchema)
+const User = mongoose.model('User', userSchema)
 
-export default user
+export default User

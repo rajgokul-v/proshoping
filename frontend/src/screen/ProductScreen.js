@@ -10,6 +10,7 @@ const ProductScreen = ({ match }) => {
 	useEffect(() => {
 		const fetchProduct = async () => {
 			const { data } = await axios.get(`/api/products/${match.params.id}`)
+			console.log(data)
 
 			setProduct(data)
 		}
@@ -23,7 +24,7 @@ const ProductScreen = ({ match }) => {
 			</Link>
 			<Row>
 				<Col md={6}>
-					<Image src={product.image} alt={product.name} fluid />
+					<Image src={product.image} alt={product.image} fluid />
 				</Col>
 				<Col md="3">
 					<ListGroup varient="flush">
