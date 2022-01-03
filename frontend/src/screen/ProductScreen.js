@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
+
 import Rating from '../components/Rating'
 
-import { listProductDetail } from '../components/redux/action/productaction'
-
 const ProductScreen = ({ match }) => {
-	const dispatch = useDispatch()
-	const productsDetail = useSelector((state) => state.productDetail)
-	console.log(productsDetail)
+	const [product, setProduct] = useState({})
 	useEffect(() => {
-		dispatch(listProductDetail(match.params.id))
-	}, [dispatch, match])
-	const product = {}
+		const fetchProductDetail = async () => {
+			const productsDetail = await axios.get(`/api/products/${match.params.id}`)
+			setProduct(productsDetail.data)
+		}
+		fetchProductDetail()
+	}, [match])
 	return (
 		<>
 			<Link to="/" className="btn btn-light my-3">
@@ -30,7 +30,7 @@ const ProductScreen = ({ match }) => {
 						</ListGroup.Item>
 
 						<ListGroup.Item>
-							price :<h3>${product.price}</h3>
+							price :<h3>{`${product.price}`}</h3>
 						</ListGroup.Item>
 
 						<ListGroup.Item>
@@ -51,7 +51,7 @@ const ProductScreen = ({ match }) => {
 								<Row>
 									<Col>Price :</Col>
 									<Col>
-										<h3>${product.price}</h3>
+										<h3>{`${product.price}`}</h3>
 									</Col>
 								</Row>
 							</ListGroup.Item>
