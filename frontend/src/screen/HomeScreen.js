@@ -5,7 +5,7 @@ import Loading from '../components/Loading'
 import Message from '../components/Message'
 
 import Product from '../components/Product'
-import { listProducts } from '../components/redux/action/productaction'
+import { listProducts } from '../components/redux/action/productAction'
 
 const HomeScreen = () => {
 	const dispatch = useDispatch()
