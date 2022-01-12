@@ -21,7 +21,6 @@ const CartScreen = ({ match, location, history }) => {
 	const qty = location.search ? Number(location.search.split('=')[1]) : 1
 	const cart = useSelector((state) => state?.cart)
 	const { cartItems } = cart
-	console.log(cartItems)
 	const dispatch = useDispatch()
 	useEffect(() => {
 		console.log(productId)
@@ -29,6 +28,10 @@ const CartScreen = ({ match, location, history }) => {
 			dispatch(addToCart(productId, qty))
 		}
 	}, [dispatch, productId, qty])
+
+	const removeFromCartHandler = () => {
+		console.log('remove')
+	}
 
 	return (
 		<>
@@ -54,7 +57,7 @@ const CartScreen = ({ match, location, history }) => {
 										<Col md={2}>
 											<Form.Control
 												as="select"
-												value={qty}
+												value={item.qty}
 												onChange={(e) =>
 													dispatch(
 														addToCart(item.product, Number(e.target.value))
@@ -67,6 +70,15 @@ const CartScreen = ({ match, location, history }) => {
 													</option>
 												))}
 											</Form.Control>
+										</Col>
+										<Col md={2}>
+											<Button
+												type="button"
+												variant="light"
+												onClick={removeFromCartHandler(item.product)}
+											>
+												<i className="fas fa-trash" />
+											</Button>
 										</Col>
 									</Row>
 								</ListGroupItem>
