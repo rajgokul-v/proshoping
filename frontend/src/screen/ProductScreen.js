@@ -1,23 +1,24 @@
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 
 import Loading from '../components/Loading'
 import Rating from '../components/Rating'
+import { listProductDetail } from '../components/redux/action/productAction'
+import Message from '../components/Message'
 
 const ProductScreen = ({ history, match }) => {
 	const [qty, setQty] = useState(0)
-	const [product, setProduct] = useState({})
-	const [loading, setLodaing] = useState(true)
+	const dispatch = useDispatch()
+	const productDetail = useSelector((state) => state.productDetail)
+	const products = productDetail?.product
+	const loading = productDetail?.loading
+	const error = productDetail?.error
+
 	useEffect(() => {
-		const fetchProductDetail = async () => {
-			const productsDetail = await axios.get(`/api/products/${match.params.id}`)
-			setLodaing(false)
-			setProduct(productsDetail.data)
-		}
-		fetchProductDetail()
-	}, [match])
+		dispatch(listProductDetail(match.params.id))
+	}, [dispatch, match])
 
 	const addToCartHandler = () => {
 		history.push(`/cart/${match.params.id}?qty=${qty}`)
@@ -29,30 +30,34 @@ const ProductScreen = ({ history, match }) => {
 			</Link>
 			{loading ? (
 				<Loading />
+			) : error ? (
+				<Message varient="danger" Children={error}>
+					{error}
+				</Message>
 			) : (
 				<Row>
 					<Col md={6}>
-						<Image src={product.image} alt={product.image} fluid />
+						<Image src={products?.image} alt={products?.image} fluid />
 					</Col>
 					<Col md="3">
 						<ListGroup varient="flush">
 							<ListGroup.Item>
-								<strong> {product.name}</strong>
+								<strong> {products?.name}</strong>
 							</ListGroup.Item>
 
 							<ListGroup.Item>
-								price :<h3>{`$${product.price}`}</h3>
+								price :<h3>{`$${products?.price}`}</h3>
 							</ListGroup.Item>
 
 							<ListGroup.Item>
 								<Rating
-									value={product.rating}
-									text={`${product.numReviews} reviews`}
+									value={products?.rating}
+									text={`${products?.numReviews} reviews`}
 								/>
 							</ListGroup.Item>
 
 							<ListGroup.Item>
-								Description : {product.description}
+								Description : {products?.description}
 							</ListGroup.Item>
 						</ListGroup>
 					</Col>
@@ -64,7 +69,7 @@ const ProductScreen = ({ history, match }) => {
 									<Row>
 										<Col>Price :</Col>
 										<Col>
-											<h3>{`$${product.price}`}</h3>
+											<h3>{`$${products?.price}`}</h3>
 										</Col>
 									</Row>
 								</ListGroup.Item>
@@ -72,11 +77,11 @@ const ProductScreen = ({ history, match }) => {
 									<Row>
 										<Col>Status :</Col>
 										<Col>
-											{product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}{' '}
+											{products?.countInStock > 0 ? 'In Stock' : 'Out of Stock'}{' '}
 										</Col>
 									</Row>
 								</ListGroup.Item>
-								{product.countInStock > 0 && (
+								{products?.countInStock > 0 && (
 									<ListGroup.Item>
 										<Row>
 											<Col>Qty</Col>
@@ -86,11 +91,13 @@ const ProductScreen = ({ history, match }) => {
 													value={qty}
 													onChange={(e) => setQty(e.target.value)}
 												>
-													{[...Array(product.countInStock).keys()].map((x) => (
-														<option key={x + 1} value={x + 1}>
-															{x + 1}
-														</option>
-													))}
+													{[...Array(products?.countInStock).keys()].map(
+														(x) => (
+															<option key={x + 1} value={x + 1}>
+																{x + 1}
+															</option>
+														)
+													)}
 												</Form.Control>
 											</Col>
 										</Row>
@@ -102,7 +109,7 @@ const ProductScreen = ({ history, match }) => {
 									onClick={addToCartHandler}
 									className=" btn-block "
 									type="button"
-									disabled={product.countInStock === 0}
+									disabled={products?.countInStock === 0}
 								>
 									Add In Card
 								</Button>
