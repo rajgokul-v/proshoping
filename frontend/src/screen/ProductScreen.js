@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom'
 
 import Loading from '../components/Loading'
 import Rating from '../components/Rating'
-import { listProductDetail } from '../components/redux/action/productAction'
 import Message from '../components/Message'
+
+import { listProductDetail } from '../components/redux/action/productAction'
 
 const ProductScreen = ({ history, match }) => {
 	const [qty, setQty] = useState(0)
@@ -20,8 +21,8 @@ const ProductScreen = ({ history, match }) => {
 		dispatch(listProductDetail(match.params.id))
 	}, [dispatch, match])
 
-	const addToCartHandler = () => {
-		history.push(`/cart/${match.params.id}?qty=${qty}`)
+	const addToCartHandler = (e) => {
+		return history.push(`/cart/${match.params.id}?qty=${qty}`)
 	}
 	return (
 		<>
