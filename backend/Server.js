@@ -5,7 +5,6 @@ import colors from 'colors'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRourtes.js'
-import { getProfile } from './controller/userController.js'
 
 dotenv.config()
 

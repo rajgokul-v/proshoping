@@ -8,7 +8,7 @@ const errorHandler = (err, req, res, next) => {
 	const statusCode = res.statusCode === 200 ? 500 : res.statusCode
 	res.status(statusCode)
 	res.json({
-		message: err.massage,
+		message: err.message,
 		stack: process.env.Node.Env === 'production' ? null : err.stack
 	})
 }
