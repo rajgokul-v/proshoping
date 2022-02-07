@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import {
 	USER_LOGIN_FAIL,
 	USER_LOGIN_REQUEST,
@@ -7,7 +8,7 @@ import {
 	USER_REGISTER_FAIL,
 	USER_REGISTER_REQUEST,
 	USER_REGISTER_SUECCSS
-} from '../../../constants/userConstants'
+} from '../../constants/userConstants'
 
 export const login = (email, password) => async (dispatch) => {
 	try {
@@ -20,7 +21,6 @@ export const login = (email, password) => async (dispatch) => {
 			{ email, password },
 			config
 		)
-		console.log(data)
 		dispatch({ type: USER_LOGIN_SUECCSS, payload: data })
 		localStorage.setItem('userInfo', JSON.stringify(data))
 	} catch (error) {

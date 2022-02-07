@@ -7,7 +7,7 @@ import Loading from '../components/Loading'
 import Rating from '../components/Rating'
 import Message from '../components/Message'
 
-import { listProductDetail } from '../components/redux/action/productAction'
+import { listProductDetail } from '../redux/action/productAction'
 
 const ProductScreen = ({ history, match }) => {
 	const [qty, setQty] = useState(0)

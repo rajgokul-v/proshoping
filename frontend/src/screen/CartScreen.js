@@ -11,10 +11,7 @@ import {
 	Card,
 	ListGroupItem
 } from 'react-bootstrap'
-import {
-	addToCart,
-	removeFromCart
-} from '../components/redux/action/cartAction'
+import { addToCart, removeFromCart } from '../redux/action/cartAction'
 
 import Message from '../components/Message'
 

@@ -7,7 +7,7 @@ import {
 	PRODUCTS_DETAIL_FAIL,
 	PRODUCTS_DETAIL_SUCCESS,
 	PRODUCTS_DETAIL_REQUEST
-} from '../../../constants/productConstants'
+} from '../../constants/productConstants'
 
 export const listProducts = () => async (dispatch) => {
 	try {

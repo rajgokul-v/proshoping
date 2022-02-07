@@ -5,7 +5,7 @@ import {
 	PRODUCTS_DETAIL_REQUEST,
 	PRODUCTS_DETAIL_SUCCESS,
 	PRODUCTS_DETAIL_FAIL
-} from '../../../constants/productConstants'
+} from '../../constants/productConstants'
 
 export const productsListReducer = (state = { products: [] }, action) => {
 	switch (action.type) {

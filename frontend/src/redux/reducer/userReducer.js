@@ -6,7 +6,7 @@ import {
 	USER_REGISTER_REQUEST,
 	USER_REGISTER_SUECCSS,
 	USER_REGISTER_FAIL
-} from '../../../constants/userConstants'
+} from '../../constants/userConstants'
 
 export const userReducer = (state = {}, action) => {
 	switch (action.type) {
@@ -17,7 +17,7 @@ export const userReducer = (state = {}, action) => {
 		case USER_LOGIN_FAIL:
 			return { loading: false, error: action.payload }
 		case USER_LOGOUT:
-			return {}
+			return { payload: action.payload }
 
 		default:
 			return state
