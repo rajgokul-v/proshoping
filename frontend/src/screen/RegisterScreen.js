@@ -7,6 +7,7 @@ import Loading from '../components/Loading'
 
 import { register } from '../redux/action/userLoginAction'
 import FormContainer from '../components/FormContainer'
+import { toast } from 'react-toastify'
 
 const RegisterScreen = ({ location, history }) => {
 	const [name, setName] = useState()
@@ -25,6 +26,7 @@ const RegisterScreen = ({ location, history }) => {
 	useEffect(() => {
 		if (userInfo) {
 			history.push(redirect)
+			toast('Register successfully...')
 		}
 	}, [history, userInfo, redirect])
 
@@ -84,7 +86,7 @@ const RegisterScreen = ({ location, history }) => {
 				</Form.Group>
 
 				<Button type="submit" varient="primary">
-					Sign In
+					Sign Up
 				</Button>
 			</Form>
 			<Row className="py-3">

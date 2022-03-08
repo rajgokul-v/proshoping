@@ -1,8 +1,9 @@
 import React from 'react'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap'
-
+import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from 'react-redux'
+
 import { logout } from '../redux/action/userLoginAction'
 
 const Header = () => {
@@ -13,6 +14,7 @@ const Header = () => {
 
 	const logoutHandler = () => {
 		dispatch(logout())
+		toast('Logout successfully...')
 	}
 	return (
 		<Navbar bg="dark" variant="dark" expand="lg">

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
 import Loading from '../components/Loading'
 import Message from '../components/Message'
 
@@ -17,6 +18,7 @@ const HomeScreen = () => {
 	return (
 		<>
 			<h3>Latest Product</h3>
+			<ToastContainer />
 			{loading ? (
 				<Loading />
 			) : error ? (

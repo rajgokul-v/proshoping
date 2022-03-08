@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Button, Row, Col, FormControl } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
+
 import Message from '../components/Message'
 import Loading from '../components/Loading'
 
@@ -22,6 +24,12 @@ const LoginScreen = ({ location, history }) => {
 	useEffect(() => {
 		if (userInfo) {
 			history.push(redirect)
+			toast('Login successfully..', {
+				style: {
+					background: 'green',
+					color: 'black'
+				}
+			})
 		}
 	}, [history, userInfo, redirect])
 

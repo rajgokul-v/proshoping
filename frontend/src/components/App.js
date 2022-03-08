@@ -1,5 +1,6 @@
 import { Container } from 'react-bootstrap'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css'
 
 import Header from './Header'
 import Footer from './Footer'
