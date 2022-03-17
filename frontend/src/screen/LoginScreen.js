@@ -24,12 +24,6 @@ const LoginScreen = ({ location, history }) => {
 	useEffect(() => {
 		if (userInfo) {
 			history.push(redirect)
-			toast('Login successfully..', {
-				style: {
-					background: 'green',
-					color: 'black'
-				}
-			})
 		}
 	}, [history, userInfo, redirect])
 
