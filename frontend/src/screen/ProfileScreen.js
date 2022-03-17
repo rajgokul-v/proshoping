@@ -23,6 +23,7 @@ const ProfileScreen = ({ location, history }) => {
 
 	const userLogin = useSelector((state) => state.userLogin)
 	const { userInfo } = userLogin
+	console.log(userInfo)
 
 	const userUpdateProfile = useSelector((state) => state?.userUpdateProfile)
 	const { success } = userUpdateProfile
